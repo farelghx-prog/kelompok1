@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StreamMax Premium - Berlangganan Sekarang</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://script.google.com/macros/s/AKfycbwJXVy32FNFWFaY5fC_4Pi3q_bdORhSqvnoOcorzVVziDStgItFsEVyGIiHxR1O4g23sQ/exec');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .card-shadow {
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+        
+        .plan-card {
+            transition: all 0.3s ease;
+        }
+        
+        .plan-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .selected-plan {
+            border: 2px solid #667eea;
+            background: linear-gradient(135deg, #667eea10, #764ba210);
+        }
+        
+        .form-input {
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .loading {
+            display: none;
+        }
+        
+        .success-message {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="gradient-bg text-white py-6">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
+                        <span class="text-2xl">🎬</span>
+                    </div>
+                    <h1 class="text-2xl font-bold">StreamMax</h1>
+                </div>
+                <div class="text-sm opacity-90">Premium Streaming Service</div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container mx-auto px-4 py-8">
+        <!-- Hero Section -->
+        <div class="text-center mb-12">
+            <h2 class="text-4xl font-bold text-gray-800 mb-4">Pilih Paket Premium Anda</h2>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">Nikmati ribuan film dan series berkualitas HD tanpa iklan. Batalkan kapan saja!</p>
+        </div>
+
+        <!-- Pricing Plans -->
+        <div class="grid md:grid-cols-3 gap-8 mb-12">
+            <!-- Basic Plan -->
+            <div class="plan-card bg-white rounded-2xl p-8 text-center cursor-pointer" onclick="selectPlan('basic', 'Paket Basic', 49000)">
+                <div class="text-4xl mb-4">📱</div>
+                <h3 class="text-2xl font-bold text-gray-800 mb-2">Paket Basic</h3>
+                <div class="text-3xl font-bold text-purple-600 mb-4">Rp 49.000<span class="text-lg text-gray-500">/bulan</span></div>
+                <ul class="text-left space-y-3 mb-6">
+                    <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> 1 Perangkat</li>
+                    <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Kualitas HD</li>
+                    <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Akses Mobile & Tablet</li>
+                    <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Download Offline</li>
+                </ul>
+            </div>
+
+            <!-- Standard Plan -->
+            <div class="plan-card bg-white rounded-2xl p-8 text-center cursor-pointer border-2 border-purple-500 relative" onclick="selectPlan('standard', 'Paket Standard', 79000)">
+                <div class="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-purple-500 text-white px-4 py-1 rounded-full text-sm font-semibold">POPULER</div>
+                <div class="text-4xl mb-4">💻</div>
+                <h3 class="text-2xl font-bold text-gray-800 mb-2">Paket Standard</h3>
+                <div class="text-3xl font-bold text-purple-600 mb-4">Rp 79.000<span class="text-lg text-gray-500">/bulan</span></div>
+                <ul class="text-left space-y-3 mb-6">
+                    <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> 2 Perangkat</li>
+                    <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Kualitas Full HD</li>
+                    <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Semua Perangkat</li>
+                    <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Download Offline</li>
+                </ul>
+            </div>
+
+            <!-- Premium Plan -->
+            <div class="plan-card bg-white rounded-2xl p-8 text-center cursor-pointer" onclick="selectPlan('premium', 'Paket Premium', 119000)">
+                <div class="text-4xl mb-4">📺</div>
+                <h3 class="text-2xl font-bold text-gray-800 mb-2">Paket Premium</h3>
+                <div class="text-3xl font-bold text-purple-600 mb-4">Rp 119.000<span class="text-lg text-gray-500">/bulan</span></div>
+                <ul class="text-left space-y-3 mb-6">
+                    <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> 4 Perangkat</li>
+                    <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Kualitas 4K Ultra HD</li>
+                    <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Semua Perangkat</li>
+                    <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Download Offline</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Order Form -->
+        <div class="max-w-2xl mx-auto">
+            <div class="bg-white rounded-2xl card-shadow p-8">
+                <h3 class="text-2xl font-bold text-gray-800 mb-6 text-center">Lengkapi Data Pemesanan</h3>
+                
+                <form id="orderForm" class="space-y-6">
+                    <!-- Selected Plan Display -->
+                    <div id="selectedPlanDisplay" class="bg-purple-50 rounded-lg p-4 border border-purple-200" style="display: none;">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <h4 class="font-semibold text-gray-800" id="planName">Pilih paket terlebih dahulu</h4>
+                                <p class="text-gray-600">Berlangganan bulanan</p>
+                            </div>
+                            <div class="text-2xl font-bold text-purple-600" id="planPrice">Rp 0</div>
+                        </div>
+                    </div>
+
+                    <!-- Personal Information -->
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Nama Lengkap *</label>
+                            <input type="text" id="fullName" required class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Email *</label>
+                            <input type="email" id="email" required class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Nomor WhatsApp *</label>
+                            <input type="tel" id="whatsapp" required class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" placeholder="08xxxxxxxxxx">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold text-gray-700 mb-2">Tanggal Lahir</label>
+                            <input type="date" id="birthDate" class="form-input w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+                        </div>
+                    </div>
+
+                    <!-- Payment Method -->
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-4">Metode Pembayaran *</label>
+                        <div class="grid md:grid-cols-3 gap-4">
+                            <div class="payment-method border border-gray-300 rounded-lg p-4 cursor-pointer hover:border-purple-500 transition-colors" onclick="selectPayment('gopay')">
+                                <div class="text-center">
+                                    <div class="text-2xl mb-2">💚</div>
+                                    <div class="font-semibold">GoPay</div>
+                                </div>
+                            </div>
+                            <div class="payment-method border border-gray-300 rounded-lg p-4 cursor-pointer hover:border-purple-500 transition-colors" onclick="selectPayment('dana')">
+                                <div class="text-center">
+                                    <div class="text-2xl mb-2">💙</div>
+                                    <div class="font-semibold">DANA</div>
+                                </div>
+                            </div>
+                            <div class="payment-method border border-gray-300 rounded-lg p-4 cursor-pointer hover:border-purple-500 transition-colors" onclick="selectPayment('ovo')">
+                                <div class="text-center">
+                                    <div class="text-2xl mb-2">💜</div>
+                                    <div class="font-semibold">OVO</div>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="hidden" id="paymentMethod" required>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold py-4 px-8 rounded-lg hover:from-purple-700 hover:to-blue-700 transform hover:scale-105 transition-all duration-300 shadow-lg">
+                        <span class="submit-text">🚀 Berlangganan Sekarang</span>
+                        <span class="loading">
+                            <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                            </svg>
+                            Memproses...
+                        </span>
+                    </button>
+                </form>
+
+                <!-- Success Message -->
+                <div class="success-message text-center py-8">
+                    <div class="text-6xl mb-4">🎉</div>
+                    <h3 class="text-2xl font-bold text-green-600 mb-2">Pemesanan Berhasil!</h3>
+                    <p class="text-gray-600 mb-4">Terima kasih! Data pemesanan Anda telah tersimpan. Tim kami akan segera menghubungi Anda untuk konfirmasi pembayaran.</p>
+                    <button onclick="resetForm()" class="bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700 transition-colors">Pesan Lagi</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 mt-16">
+        <div class="container mx-auto px-4 text-center">
+            <div class="flex items-center justify-center space-x-3 mb-4">
+                <div class="w-8 h-8 bg-purple-600 rounded-lg flex items-center justify-center">
+                    <span class="text-lg">🎬</span>
+                </div>
+                <span class="text-xl font-bold">StreamMax</span>
+            </div>
+            <p class="text-gray-400">© 2024 StreamMax. Semua hak dilindungi. | Demo untuk tugas pembelajaran</p>
+        </div>
+    </footer>
+
+    <script>
+        let selectedPlan = null;
+        let selectedPayment = null;
+
+        // GANTI URL GOOGLE SHEETS ANDA DI SINI
+        const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbwJXVy32FNFWFaY5fC_4Pi3q_bdORhSqvnoOcorzVVziDStgItFsEVyGIiHxR1O4g23sQ/exec';
+
+        function selectPlan(planId, planName, price) {
+            // Remove previous selection
+            document.querySelectorAll('.plan-card').forEach(card => {
+                card.classList.remove('selected-plan');
+            });
+            
+            // Add selection to clicked card
+            event.currentTarget.classList.add('selected-plan');
+            
+            // Store selected plan
+            selectedPlan = {
+                id: planId,
+                name: planName,
+                price: price
+            };
+            
+            // Update display
+            document.getElementById('selectedPlanDisplay').style.display = 'block';
+            document.getElementById('planName').textContent = planName;
+            document.getElementById('planPrice').textContent = `Rp ${price.toLocaleString('id-ID')}`;
+            
+            // Smooth scroll to form
+            document.getElementById('orderForm').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+
+        function selectPayment(method) {
+            // Remove previous selection
+            document.querySelectorAll('.payment-method').forEach(card => {
+                card.classList.remove('border-purple-500', 'bg-purple-50');
+            });
+            
+            // Add selection to clicked card
+            event.currentTarget.classList.add('border-purple-500', 'bg-purple-50');
+            
+            // Store selected payment
+            selectedPayment = method;
+            document.getElementById('paymentMethod').value = method;
+        }
+
+        function resetForm() {
+            document.getElementById('orderForm').style.display = 'block';
+            document.querySelector('.success-message').style.display = 'none';
+            document.getElementById('orderForm').reset();
+            document.getElementById('selectedPlanDisplay').style.display = 'none';
+            
+            // Reset selections
+            document.querySelectorAll('.plan-card').forEach(card => {
+                card.classList.remove('selected-plan');
+            });
+            document.querySelectorAll('.payment-method').forEach(card => {
+                card.classList.remove('border-purple-500', 'bg-purple-50');
+            });
+            
+            selectedPlan = null;
+            selectedPayment = null;
+        }
+
+        document.getElementById('orderForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Validation
+            if (!selectedPlan) {
+                alert('Silakan pilih paket terlebih dahulu!');
+                return;
+            }
+            
+            if (!selectedPayment) {
+                alert('Silakan pilih metode pembayaran!');
+                return;
+            }
+            
+            // Show loading
+            document.querySelector('.submit-text').style.display = 'none';
+            document.querySelector('.loading').style.display = 'inline-flex';
+            
+            // Collect form data
+            const formData = {
+                timestamp: new Date().toLocaleString('id-ID'),
+                fullName: document.getElementById('fullName').value,
+                email: document.getElementById('email').value,
+                whatsapp: document.getElementById('whatsapp').value,
+                birthDate: document.getElementById('birthDate').value,
+                planName: selectedPlan.name,
+                planPrice: selectedPlan.price,
+                paymentMethod: selectedPayment,
+                status: 'Pending'
+            };
+            
+            try {
+                // Send to Google Sheets
+                const response = await fetch(GOOGLE_SHEETS_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                // Show success message
+                setTimeout(() => {
+                    document.getElementById('orderForm').style.display = 'none';
+                    document.querySelector('.success-message').style.display = 'block';
+                    
+                    // Reset loading state
+                    document.querySelector('.submit-text').style.display = 'inline';
+                    document.querySelector('.loading').style.display = 'none';
+                }, 1500);
+                
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Terjadi kesalahan. Silakan coba lagi.');
+                
+                // Reset loading state
+                document.querySelector('.submit-text').style.display = 'inline';
+                document.querySelector('.loading').style.display = 'none';
+            }
+        });
+
+        // Auto-select standard plan on load
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                document.querySelectorAll('.plan-card')[1].click();
+            }, 1000);
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'980d0eca10eb4048',t:'MTc1ODE1ODgxNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
